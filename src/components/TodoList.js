@@ -3,7 +3,6 @@ import TodoForm from './TodoForm';
 import Todo from './Todo';
 
 function TodoList() {
-  const [showAddTodo, setShowAddTodo] = useState(false)
   const [todos, setTodos] = useState([]);
 
 
@@ -24,7 +23,7 @@ function TodoList() {
       return data
     }
 
-    // Fetch Task
+  // Fetch Task
   const fetchTask = async (id) => {
     const res = await fetch (`http://localhost:5000/todos/${id}`)
     const data = await res.json()
@@ -44,16 +43,6 @@ function TodoList() {
     const data = await res.json()
     setTodos([...todos, data])
   };
-  // const addTodo = (todo) => {
-  //   if (!todo.text || /^\s*$/.test(todo.text)) {
-  //     return;
-  //   }
-
-  //   const newTodos = [todo, ...todos];
-
-  //   setTodos(newTodos);
-  //   console.log(...todos);
-  // };
 
   // -------Update ToDo------
   const updateTodo = async(id) => {
@@ -69,13 +58,6 @@ function TodoList() {
     )
   }
 
-  // const updateTodo = (todoId, newValue) => {
-  //   if (!newValue.text || /^\s*$/.test(newValue.text)) {
-  //     return;
-  //   }
-
-  //   setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
-  // };
 
   // --------Delete ToDo----------
   const removeTodo = async (id) => {
@@ -84,12 +66,6 @@ function TodoList() {
     })
     setTodos(todos.filter((todos) => todos.id !== id))
   }
-
-  // const removeTodo = id => {
-  //   const removedArr = [...todos].filter(todo => todo.id !== id);
-
-  //   setTodos(removedArr);
-  // };
 
   const completeTodo = id => {
     let updatedTodos = todos.map(todo => {
